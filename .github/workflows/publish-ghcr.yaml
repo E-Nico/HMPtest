@@ -1,5 +1,6 @@
 name: Docker Image CI double build
 #test
+#test 2
 on:
   push
 
@@ -13,12 +14,6 @@ jobs:
           docker login --username E-Nico --password ${{ secrets.GH_PAT }} ghcr.io
           docker login --username oxnico --password ${{ secrets.PASS }} docker.io
           docker build . -t oxnico/hmptest:latest
-<<<<<<< HEAD
           docker build . -t e-nico/hmptest:latest
           docker push oxnico/hmptest:latest
-          docker push ghcr.io/E-Nico/HMPtest:latest
-=======
-          docker build . -t E-Nico/HMPtest:latest
-          docker push oxnico/hmptest:latest
-          docker push ghcr.io/E-Nico/HMPtest:latest
->>>>>>> a904f235a74527e6e2ea73038768daba12568df8
+          docker push ghcr.io/e-nico/hmptest:latest
