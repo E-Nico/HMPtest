@@ -11,8 +11,13 @@ jobs:
       - name: Build and push the new image
         run: |
           docker login --username E-Nico --password ${{ secrets.GH_PAT }} ghcr.io
+<<<<<<< HEAD
           docker login --username oxnico --password ${{ secrets.PASS }} docker.io
           docker build . -t oxnico/hmptest:latest
           docker build . -t E-Nico/HMPtest:latest
           docker push oxnico/hmptest:latest
           docker push ghcr.io/E-Nico/HMPtest:latest
+=======
+          docker build . -t oxnico/hmptest:latest
+          docker push oxnico/hmptest:latest
+>>>>>>> 0c8902d2766904a4551a0934f286e1df9b8e4aab
