@@ -7,8 +7,8 @@ jobs:
   build_and_publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/chekout@v3
-      - name: Build and push the image
+      - uses: actions/checkout@v4
+      - name: Build and push the new image
         run: |
           docker login --username E-Nico --password ${{ secrets.GH_PAT }} ghcr.io
           docker build . -t ghcr.io/e-nico/hmptest:latest
