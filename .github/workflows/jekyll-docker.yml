@@ -16,7 +16,7 @@ jobs:
     - name: Build the site in the jekyll/builder container
       run: |
         docker login --username E-Nico --password ${{ secrets.GH_PAT }} ghcr.io
-        docker build . -t ${{ github.workspace }}:/srv/jekyll
+        docker build . -t ghcr.io/e-nico/hmptest:latest
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
