@@ -1,5 +1,6 @@
 name: Docker Image CI double build
 #test
+#test 2
 on:
   push
 
@@ -8,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build and push the new image
+      - name: Double build and push the new image
         run: |
           docker login --username E-Nico --password ${{ secrets.GH_PAT }} ghcr.io
           docker login --username oxnico --password ${{ secrets.PASS }} docker.io
           docker build . -t oxnico/hmptest:latest
-          docker build . -t E-Nico/HMPtest:latest
+          docker build . -t ghcr.io/e-nico/hmptest:latest
           docker push oxnico/hmptest:latest
-          docker push ghcr.io/E-Nico/HMPtest:latest
+          docker push ghcr.io/e-nico/hmptest:latest
