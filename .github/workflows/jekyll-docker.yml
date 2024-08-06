@@ -24,3 +24,7 @@ jobs:
         docker run --rm -d -p 3000:3000 --name juice-shop juice-shop
         # Optionally, run tests or perform additional operations here
         # Example: docker exec juice-shop npm test
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
