@@ -18,14 +18,3 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
-
-    - name: Deploy to GitHub Pages
-      run: |
-        git config --global user.email "nicomagny@outlook.fr"
-        git config --global user.name "E-Nico"
-        cd _site
-        git init
-        git checkout -b gh-pages
-        git add .
-        git commit -m "Deploy Jekyll site"
-        git push --force --quiet "https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git" gh-pages
