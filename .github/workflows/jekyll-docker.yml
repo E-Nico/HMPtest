@@ -22,7 +22,7 @@ jobs:
 
     - name: Run Juice Shop Docker container
       run: |
-        docker run --rm -d -p 3000:3000 --name juice-shop juice-shop
+        docker run --rm -d -p 3000:3000 --name hmptest ghcr.io/e-nico/hmptest:latest
         # Optionally, run tests or perform additional operations here
         # Example: docker exec juice-shop npm test
 
