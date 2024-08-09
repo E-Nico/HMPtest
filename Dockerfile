@@ -19,6 +19,21 @@ ARG CYCLONEDX_NPM_VERSION=latest
 RUN npm install -g @cyclonedx/cyclonedx-npm@$CYCLONEDX_NPM_VERSION
 RUN npm run sbom
 
+
+
+RUN apk update
+RUN apk upgrade
+RUN apk add curl wget bash cmake
+RUN apk add ruby ruby-bundler ruby-dev ruby-irb ruby-rdoc libatomic readline readline-dev \
+libxml2 libxml2-dev libxslt libxslt-dev zlib-dev zlib \
+libffi-dev build-base git nodejs
+RUN export PATH="/root/.rbenv/bin:$PATH"
+RUN rm -rf /var/cache/apk/*
+# Install Jekyll and required gems
+RUN gem install bundler
+RUN gem install jekyll
+RUN gem install github-pages
+
 # workaround for libxmljs startup error
 FROM node:20-buster as libxmljs-builder
 WORKDIR /juice-shop
